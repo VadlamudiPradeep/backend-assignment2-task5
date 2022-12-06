@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="saveUserDetailsInLocalStorage(event)">
+        <label>Name :</label>
+        <input id="username" type="text" name="username" required />
+        <br>
+        <label>Phone number: </label>
+        <input id="number" type="tel" name="number" required />
+        <br />
+        <label>Email</label>
+        <input id="email"  type="email" name="email" required />
+        <br />
+        <button>submit</button>
+    </form>
+        <li id="userList"></li>
+        <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+      
+      function saveUserDetailsInLocalStorage(event){
+        event.preventDefault();
+        let name = event.target.username.value ;
+        let phonenumber = event.target.number.value ;
+        let email = event.target.email.value ;
+        let obj = {
+            name ,
+            phonenumber,
+            email
+        }
+       axios.post('http://localhost:3000/user/add-user', obj)
+       .then(response =>{
+        console.log(response);
+        showUserOnscreen(response.data.newUserDetails)
+       }).catch(err=>{
+          console.log(err);
+       });
+      }
+
+      window.addEventListener('DOMContentLoaded',()=>{
+        axios.get("http://localhost:3000/user/get-user")
+        .then((response)=>{
+            console.log(response);
+            for(var i=0 ; i<response.data.allUsers.length ;i++){
+                showUserOnscreen(response.data.allUsers[i]);
+            };
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+      })
+     function showUserOnscreen(user){
+document.getElementById('email').value = '';
+document.getElementById('username').value = '';
+document.getElementById('number').value = '';
+
+// if(localStorage.getItem(user.email)!== null){
+//     removeFromScreen(user.email)
+// }
+        const parentNode = document.getElementById('userList');
+        const ChildHTML = `<li id=${user.id}>${user.name}- ${user.email}
+            <button onClick=deleteUser('${user.id}')>Delete User</button>
+            <button onClick=editUser('${user.id}','${user.email}','${user.name}','${user.phonenumber}')>Edit User</button>
+            </li>`;
+            parentNode.innerHTML += ChildHTML ;
+     }
+     function deleteUser(userId){
+        axios.delete(`http://localhost:3000/user/delete-user/${userId}`)
+      .then((response)=>{
+        removeFromScreen(userId);
+      }).catch((err)=>{
+        console.log(err);
+      })
+       }
+     function removeFromScreen(userId){
+           const parentNode = document.getElementById('userList');
+           const childNode = document.getElementById(userId);
+           if(childNode){
+            parentNode.removeChild(childNode);
+           }
+     }
+     function editUser(emailId, name , number ,userId){
+        document.getElementById('email').value = emailId ;
+        document.getElementById('username').value = name ;
+        document.getElementById('number').value =number ;
+        deleteUser(userId);
+     }
+
+    </script>
+</body>
+</html>
