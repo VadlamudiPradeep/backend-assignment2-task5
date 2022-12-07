@@ -22,7 +22,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user')
 
-app.use(bodyParser.json({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
