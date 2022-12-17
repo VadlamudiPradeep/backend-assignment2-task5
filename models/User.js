@@ -9,15 +9,32 @@ const User = sequelize.define('user', {
     allowNull: false,
     primaryKey: true
   },
-  name: Sequelize.STRING,
-  email: {
+  amount: Sequelize.STRING,
+  description: {
     type: Sequelize.STRING,
     unique: true,
   },
-  phonenumber : {
+  category : {
     type : Sequelize.STRING,
     unique: true,
   }
 });
+// const User = sequelize.define('user', {
+//   id: {
+//     type: Sequelize.INTEGER,
+//     autoIncrement: true,
+//     allowNull: false,
+//     primaryKey: true
+//   },
+//   name: Sequelize.STRING,
+//   email: {
+//     type: Sequelize.STRING,
+//     unique: true,
+//   },
+//   phonenumber : {
+//     type : Sequelize.STRING,
+//     unique: true,
+//   }
+// });
 
 module.exports = User;

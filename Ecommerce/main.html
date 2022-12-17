@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Project</title>
+    <link rel="stylesheet" href="./style.css">
+   
+</head>
+<body>
+    <div id="EcommerceContainer">
+        <header>
+            <ul class='header'>
+                <li><a href="./index.html">HOME</a></li>
+
+                <li><a href="#">STORE</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <a href="#cart" class="cart-holder">cart<span class='cart-number'>0</span></a>
+            </ul>
+            <h1>The Generics</h1>
+        </header>
+        <section id="Products" class="container">
+            <h2>product</h2>
+            <!-- <div id ="music-content">
+                <div id='album1'>
+                    <h3>Album 1</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Album 1.png" alt="">
+                    </div>
+                                    <div class="prod-details">
+                        <span>$<span>12.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+                <div id='album2'>
+                    <h3>Album 2</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Album 2.png" alt="">
+                    </div>
+                                    <div class="prod-details">
+                        <span>$<span>14.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+                <div id='album3'>
+                    <h3>Album 3</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Album 3.png" alt="">
+                    </div>
+                                    <div class="prod-details">
+                        <span>$<span>9.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+                <div id='album4'>
+                    <h3>Album 4</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Album 4.png" alt="">
+                    </div>
+                                    <div class="prod-details">
+                        <span>$<span>19.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+            </div>-->
+
+        </section> 
+        <!-- <section id="merch" class="container">
+            <h2>MERCH</h2> -->
+            <!-- <div id="merch-content">
+                <div id="t-shirt">
+                    <h3>T-Shirt</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Shirt.png" alt="">
+                    </div>
+                                <div class="prod-details">
+                        <span>$<span>19.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+                <div id="coffee-cup">
+                    <h3>Coffee Cup</h3>
+                    <div class="image-container">
+                        <img class="prod-images" src="./img/Cofee.png" alt="">
+                    </div>
+                                <div class="prod-details">
+                        <span>$<span>6.99</span></span>
+                        <button class="shop-item-button" type='button'>ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+       </section> -->
+        <section id="cart" class="container">
+            <h2>CART</h2>
+            <button class="cancel">X</button>
+            <div class="cart-row cart-header">
+                <span class='cart-item cart-column'>ITEM</span>
+                <span class='cart-price cart-column'>PRICE</span>
+                <span class='cart-quantity cart-column'>QUANTITY</span>
+            </div>
+            <div class='cart-items'>
+            </div>
+            <div class="cart-total">
+                <span>
+                    <span class='total-title'> <strong>Total</strong>
+                        </span>
+                    $<span id='total-value'>0</span>
+                </span>
+            </div>
+            <button class='purchase-btn' type='button'>PURCHASE</button>
+        </section>
+
+        <button class="cart-btn-bottom"> <a href="#cart" class="cart-bottom">See the cart</a></button>
+    </div>
+
+    <div id="container"></div>
+    <footer>
+        <div class="footer-title">
+            The Generics
+        </div>
+        <div class="footer-icons">
+            <ul>
+                <li><a href="https://www.youtube.com">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkr3BGEcji4q1bLF8cj284qF_qS5bAgc3FA&usqp=CAU" alt="">
+                </a></li>
+                <li><a href="https://spotify.com">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFUtZR7quwCZPstZyQOGfZILGNt6B2nYCfhw&usqp=CAU" alt="">
+                </a></li>
+                <li><a href="https://facebook.com">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3gdSmGUC0vK2YEoo-MiT5YYdmPWHxuf2-A&usqp=CAU" alt="">
+                </a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js" integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
