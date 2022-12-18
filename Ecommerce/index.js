@@ -1,8 +1,4 @@
-
-
 const cart_items = document.querySelector('#cart .cart-items');
-
-
 const parentContainer = document.getElementById('EcommerceContainer');
 parentContainer.addEventListener('click',(e)=>{
 
@@ -73,19 +69,45 @@ window.addEventListener('DOMContentLoaded', ()=>{
     axios.get('http://localhost:3000/products')
     .then((data)=>{
         console.log(data);
-        if(data.request.status===200){
-            var products = data.data.products;
+        if(data.request.status === 200){
+            const products = data.data.products;
             var parentSection = document.getElementById('Products');
-            products.forEach(product => {
+           products.forEach((product) => {
                 var productHtml =`
                 <div>
                 <h1>${product.title}</h1>
-                <img src=${product.imgUrl}></img>
-                <button>ADD TO CART </button>
+                <img src=${product.imageUrl}></img>
+                <button onClick='${product.id}'>ADD TO CART </button>
                 </div>
                 `
                 parentSection.innerHTML = parentSection.innerHTML + productHtml
             });
         }
     })
-})
+});
+
+// function addToCart(productId){
+//     axios.post('http://localhost:3000/cart', {productId: productId})
+//     .then((response)=>{
+//         console.log(response);
+// if(response.status === 200){
+// notifyUsers(resizeBy.data.message);
+// } else {
+//     throw new Error();
+// }
+//     })
+//     .catch((err)=>{
+//        notifyUsers(err.data.message)
+//     })
+// };
+
+// function notifyUsers(message){
+//     const container = document.getElementById('container');
+//     const notification = document.createElement('div');
+//     notification.classList.add('notification');
+//     notification.innerHTML = `<h4>${message}<h4>`;
+//     container.appendChild(notification);
+//     setTimeout(()=>{
+//         notification.remove();
+//     },2500)
+// }
