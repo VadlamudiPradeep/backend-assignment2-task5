@@ -69,29 +69,23 @@ parentContainer.addEventListener('click',(e)=>{
         e.target.parentNode.parentNode.remove()
     }
 })
-
-window.addEventListener('DOMContentLoaded' ,()=>{
-    let get = async()=>{
-    try{
-        var getdata = await axios.get('http://localhost:3000/product')
-        var data = getdata ; 
-        if(data.request.status ===200){
+window.addEventListener('DOMContentLoaded', ()=>{
+    axios.get('http://localhost:3000/products')
+    .then((data)=>{
+        console.log(data);
+        if(data.request.status===200){
             var products = data.data.products;
             var parentSection = document.getElementById('Products');
-            products.forEach(product =>{
-                var productHtml = `
+            products.forEach(product => {
+                var productHtml =`
                 <div>
                 <h1>${product.title}</h1>
-                <img src=${product.imageUrl}>
+                <img src=${product.imgUrl}></img>
+                <button>ADD TO CART </button>
                 </div>
                 `
-                parentSection.innerHTML+=productHtml
-            })
+                parentSection.innerHTML = parentSection.innerHTML + productHtml
+            });
         }
-    }
-    catch(err){
-        console.log(err);
-    }
-    }
-    get();
+    })
 })
